@@ -1,0 +1,18 @@
+<div class="pokemon-card" [routerLink]="['/pokemon', pokemon.name]">
+  <div class="image-container">
+    <img [src]="pokemonImage" [alt]="pokemon.name" loading="lazy" />
+  </div>
+  <div class="info">
+    <span class="number">#{{ pokemon.id.toString().padStart(3, '0') }}</span>
+    <h3>{{ pokemon.name | titlecase }}</h3>
+    <div class="types">
+      <span *ngFor="let typeInfo of pokemon.types" [className]="'type ' + typeInfo.type.name">
+        {{ typeInfo.type.name }}
+      </span>
+    </div>
+    <div class="measurements">
+      <span>Altura: {{ pokemon.height / 10 }} m</span>
+      <span>Peso: {{ pokemon.weight / 10 }} kg</span>
+    </div>
+  </div>
+</div>

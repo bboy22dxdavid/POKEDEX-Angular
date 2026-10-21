@@ -1,0 +1,33 @@
+<div class="detail-container">
+  <button (click)="goBack()" class="btn-back">← Voltar</button>
+
+  @if (isLoading()) {
+    <p>Carregando detalhes...</p>
+  } @else if (pokemon()) {
+    <div class="pokemon-detail-card">
+      <div class="detail-header">
+        <span class="number">#{{ pokemon()!.id.toString().padStart(3, '0') }}</span>
+        <h2>{{ pokemon()!.name | titlecase }}</h2>
+      </div>
+
+      <div class="detail-body">
+        <img [src]="pokemon()!.sprites.other?.['official-artwork']?.front_default || pokemon()!.sprites.front_default" [alt]="pokemon()!.name" />
+
+        <div class="specs">
+          <p><strong>Altura:</strong> {{ pokemon()!.height / 10 }} m</p>
+          <p><strong>Peso:</strong> {{ pokemon()!.weight / 10 }} kg</p>
+
+          <div class="detail-types">
+            <strong>Tipos:</strong>
+            <span *ngFor="let typeInfo of pokemon()!.types" [className]="'type ' + typeInfo.type.name">
+              {{ typeInfo.type.name }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  } @else {
+    <p>Pokémon não encontrado.</p>
+  }
+</div>
+

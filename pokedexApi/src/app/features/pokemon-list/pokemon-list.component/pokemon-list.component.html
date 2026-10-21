@@ -1,0 +1,48 @@
+<main class="pokedex-container">
+  <div class="pokedex-stage">
+    <img
+      class="pokedex-image"
+      src="/assets/pokedex.png"
+      alt="Pokédex vermelha aberta"
+    />
+
+    <section class="pokemon-screen" aria-live="polite" aria-label="Pokémon selecionado">
+      @if (displayedPokemon(); as pokemon) {
+        <img
+          class="pokemon-art"
+          [src]="pokemonImage(pokemon)"
+          [alt]="pokemon.name | titlecase"
+        />
+        <span class="pokemon-number">#{{ pokemon.id.toString().padStart(3, '0') }}</span>
+        <strong class="pokemon-name">{{ pokemon.name | titlecase }}</strong>
+        <span class="pokemon-type">{{ pokemon.types[0]?.type?.name }}</span>
+      } @else if (isLoading()) {
+        <span class="screen-message">Carregando...</span>
+      } @else {
+        <span class="screen-message">Pokémon indisponível</span>
+      }
+
+      @if (searchError()) {
+        <span class="search-error" role="alert">{{ searchError() }}</span>
+      }
+    </section>
+
+    <form
+      class="pokemon-search"
+      (submit)="searchPokemon(searchInput.value, $event)"
+      aria-label="Pesquisar Pokémon"
+    >
+      <label class="visually-hidden" for="pokemon-name">Nome do Pokémon</label>
+      <input
+        #searchInput
+        id="pokemon-name"
+        type="search"
+        placeholder="Nome do Pokémon"
+        autocomplete="off"
+      />
+      <button type="submit" [disabled]="isSearching()">
+        {{ isSearching() ? '...' : 'OK' }}
+      </button>
+    </form>
+  </div>
+</main>

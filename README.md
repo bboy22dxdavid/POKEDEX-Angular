@@ -6,7 +6,7 @@ Projeto de uma pokedex, utilizando Angular.
 para consumir uma API de consulta de pokemon.
 
 
-![preview](/public/assets/preview.png)
+![preview](/pokedexApi/public/assets/preview.png)
 
 
 

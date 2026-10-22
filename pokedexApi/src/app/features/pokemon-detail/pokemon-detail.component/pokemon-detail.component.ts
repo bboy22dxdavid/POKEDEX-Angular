@@ -11,9 +11,9 @@ import { PokemonDetails } from '../../../core/models/pokemon.model';
   templateUrl: './pokemon-detail.component.html',
 })
 export class PokemonDetailComponent implements OnInit{
-  private route = inject(ActivatedRoute);
-  private pokemonService = inject(PokemonService);
-  private location = inject(Location);
+  private readonly route = inject(ActivatedRoute);
+  private readonly pokemonService = inject(PokemonService);
+  private readonly location = inject(Location);
 
   pokemon = signal<PokemonDetails | null>(null);
   isLoading = signal<boolean>(true);

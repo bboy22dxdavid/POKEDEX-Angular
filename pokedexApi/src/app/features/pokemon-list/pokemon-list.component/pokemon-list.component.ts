@@ -11,7 +11,7 @@ import { PokemonDetails } from '../../../core/models/pokemon.model';
   styleUrls: ['./pokemon-list.component.scss']
 })
 export class PokemonListComponent implements OnInit {
-  private pokemonService = inject(PokemonService);
+  private readonly pokemonService = inject(PokemonService);
 
   pokemons = signal<PokemonDetails[]>([]);
   isLoading = signal<boolean>(true);

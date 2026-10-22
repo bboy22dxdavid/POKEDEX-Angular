@@ -63,17 +63,20 @@
 
 .screen-message,
 .search-error {
-  font-size: clamp(6px, 1.3vw, 10px);
+  margin-top: 40px;
+  font-size: clamp(8px, 1.3vw, 13px);
   line-height: 1.15;
 }
 
 .search-error {
+  font-size: 16px;
+  font-weight: bold;
   position: absolute;
   right: 0;
   bottom: 0;
   left: 0;
-  padding: 1px;
-  background: #fff;
+  padding: 10px;
+  background: transparent;
   color: #b00020;
 }
 
